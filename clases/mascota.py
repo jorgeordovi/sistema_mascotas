@@ -5,7 +5,7 @@ class Mascota:
         self.salud = salud
         self.precio = precio
 
-    def actualizar_informacion(self, edad=None, salud=None, precio=None)
+    def actualizar_informacion(self, edad=None, salud=None, precio=None):
         if edad:
             self.edad = edad
         if salud:
