@@ -1,6 +1,5 @@
 import datetime
 
-from clases import producto
 
 class Venta:
     def  __init__(self,cliente, lista_de_productos):
@@ -18,7 +17,7 @@ class Venta:
     
     def mostrar_informacion(self):
         productos = ", ".join([producto.nombre for producto in self.lista_de_productos])
-        return f"Cliente: {self.cliente.nombre}, Productos: {producto}, Total: {self.total}"
+        return f"Cliente: {self.cliente.nombre}, Productos: {productos}, Total: {self.total}"
     
 
         

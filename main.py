@@ -1,7 +1,7 @@
 #funcin de interfas
 
-from http import client
-from clases.inventario import Inventario, producto
+from clases.inventario import Inventario
+from clases.producto import Producto
 from clases.cliente import Cliente
 from clases.mascota import Gato, Perro
 from clases.venta import Venta
@@ -16,8 +16,8 @@ def registrar_mascota():
 
     if tipo == "perro":
         raza = input("Raza del perro: ")
-        nivel_de_energia = input("Nivel de energia del gato: ")
-        mascota = Perro(input("Precio de la mascota "))
+        nivel_de_energia = input("Nivel de energia del Perro: ")
+        mascota = Perro(nombre, edad, precio, salud, raza, nivel_de_energia)
     elif tipo == "gato":
         raza = input("Raza del gato; ")
         independencia = input("Nivel de independencia del gato: ")
@@ -37,7 +37,7 @@ def registrar_cliente():
 
 def registrar_producto():
     nombre = input("Nombre del producto: ")
-    categoria = input("Categoria del productot: ")
+    categoria = input("Categoria del producto: ")
     precio = input("Precio del producto: ")
     cantidad = int(input("Cantidad de producto: "))
     producto = Producto(nombre, categoria, precio, cantidad)
@@ -53,17 +53,17 @@ def registrar_venta(clientes, inventario):
     productos = []
 
     while True:
-        nombre_producto= input("Nombre del producto (deja vacio para finalizar): ")
+        nombre_producto = input("Nombre del producto (deja vacio para finalizar): ")
         if not nombre_producto:
             break
-        producto = next((p for p in inventario.lista_de_producto if p.nombre == nombre_producto), None)
+        producto = next((p for p in inventario.lista_de_productos if p.nombre == nombre_producto), None)
         if producto:
             productos.append(producto)
         else:
-            print("Producto no encontrtado")
+            print("Producto no encontrado")
         
     if productos:
-        venta: Venta(cliente, productos)
+        venta = Venta(cliente, productos)
         venta.registrar_venta()
         print("La venta ha sido registrtada con exito")
     else:
@@ -103,9 +103,9 @@ def main():
                 print("Cliente registrado con exito")
         
         elif opcion == "3":
-            producto = registrar_producto
+            producto = registrar_producto()
             if producto:
-                inventario.agregar_producto(producto)
+                inventario.agregar_producto(producto)#///
                 print("Producto registrado con exito")
             
         elif opcion == "4":
